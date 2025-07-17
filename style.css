@@ -1,0 +1,78 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #1a1a1a; /* Fondo oscuro al estilo gótico */
+    overflow: hidden;
+}
+
+.heart {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: relative;
+    transform: rotate(45deg);
+    animation: moveHeart 2s infinite ease-in-out;
+    z-index: 1;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart::before {
+    top: -50px;
+    left: 0;
+}
+
+.heart::after {
+    left: -50px;
+    top: 0;
+}
+
+.quote {
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    font-style: italic;
+    color: #fff; /* Texto blanco para contraste */
+    text-align: center;
+    animation: fadeIn 2s infinite ease-in-out;
+    z-index: 1;
+}
+
+#confettiCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Animación para el corazón */
+@keyframes moveHeart {
+    0% {
+        transform: rotate(45deg) translate(0, 0);
+    }
+    50% {
+        transform: rotate(45deg) translate(20px, -20px) scale(1.2);
+    }
+    100% {
+        transform: rotate(45deg) translate(0, 0);
+    }
+}
+
+/* Animación para la cita */
+@keyframes fadeIn {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
